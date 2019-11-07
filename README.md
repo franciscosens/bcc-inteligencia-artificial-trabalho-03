@@ -9,6 +9,8 @@ Alunos:
 * [William Lopes da Silva](wiiulopes)
 
 
+[Conteúdo](assets/Conteúdo/Uni04_AprendizadoSupervisionadoRegressão.pdf)
+
 # Fase 1: Análise de Correlação e Regressão Linear
 
 Este trabalho visa entender a natureza da relação linear entre os dados. Faremos a análise de correlação, que é utilizada para medir a intensidade de associação de duas variáveis (Relação Linear), e, também a análise de regressão, que é utilizada para prever valores de uma variável dados os valores de outra. A correlação foca primeiramente na associação das variáveis, enquanto a regressão é designada para ajudar a fazer previsões.
