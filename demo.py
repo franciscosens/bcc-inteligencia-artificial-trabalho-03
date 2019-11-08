@@ -18,13 +18,21 @@ class CorrelacaoRegressaoLinear:
 
         correlacao = self.correlacao(vetor_x, vetor_y)
         regressao = self.regressao(vetor_x, vetor_y)
-        self.gerar_grafico(vetor_x, vetor_y, regressao.valores_y)
+        self.gerar_grafico(vetor_x, vetor_y, correlacao, regressao)
 
-    def gerar_grafico(self, vetor_x, vetor_y, valores_y):
+
+    def gerar_grafico(self, vetor_x, vetor_y, correlacao, regressao):
 
         plt.scatter(vetor_x, vetor_y, marker='s',  color='red', linewidth=1)
-        plt.plot(vetor_x, valores_y)
+        plt.plot(vetor_x, regressao.valores_y)
+
+        b0 = '%.4f' % regressao.b0
+        b1 = '%.4f' % regressao.b1
+        correlacao_arredondada = '%.4f' % correlacao
+
+        plt.title(f'Correlação: {correlacao_arredondada} e Regressão => b0 : {b0} b1 : {b1}')
         plt.show()
+
 
     def correlacao(self, vetor_x, vetor_y):
 
@@ -40,6 +48,7 @@ class CorrelacaoRegressaoLinear:
         soma_parte_baixo_1 = 0.0
         soma_parte_baixo_2 = 0.0
         soma_parte_cima = 0.0
+        
         for i in range(quantidade_elementos_x):
             x = float(vetor_x[i])
             y = float(vetor_y[i])
@@ -58,13 +67,16 @@ class CorrelacaoRegressaoLinear:
         parte_baixo = math.sqrt(parte_baixo)
 
         coefiente_correlacao = soma_parte_cima / parte_baixo
+
         return coefiente_correlacao
+
 
     def somar_valores(self, vetor, quantidade_elementos):
         soma = 0.0
         for i in range(quantidade_elementos):
             soma = soma + vetor[i]
         return soma
+
 
     def regressao(self, vetor_x, vetor_y):
 
@@ -79,6 +91,7 @@ class CorrelacaoRegressaoLinear:
 
         soma_parte_cima = 0.0
         soma_parte_baixo = 0.0
+
         for i in range(quantidade_elementos_x):
             x = vetor_x[i]
             y = vetor_y[i]
@@ -93,11 +106,13 @@ class CorrelacaoRegressaoLinear:
         b1 = soma_parte_cima / soma_parte_baixo
         b0 = media_y - b1 * media_x
         valores_y = []
+
         for i in range(quantidade_elementos_x):
             x = vetor_x[i]
             y = b0 + b1 * x
             valores_y.append(y)
         Retorno = namedtuple("Retorno", ["b0", "b1", "valores_y"])
+
         return Retorno(b0, b1, valores_y)
 
 
