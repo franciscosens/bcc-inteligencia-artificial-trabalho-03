@@ -24,7 +24,7 @@ class CorrelacaoRegressaoLinearMultipla:
 
         regressao = self.regressao(matriz_x, vetor_y)
 
-        self.gerar_grafico(matriz_x, vetor_y, regressao)
+        self.gerar_grafico(matriz_x, vetor_y, regressao, correlacao_tamanho_casa, correlacao_numero_quartos)
 
 
     def reg_multipla(self):
@@ -38,28 +38,29 @@ class CorrelacaoRegressaoLinearMultipla:
         
         matriz_potencia = np.power(multiplicacao_matriz, -1)
 
-        matriz_transposta_multiplicada_pelo_vetor = np.array(np.dot(matriz_aux.T, vetor_y))
+        potencia_matriz_transposta = np.dot(matriz_potencia, matriz_aux.T)
+        #matriz_transposta_multiplicada_pela_vetor = np.array(np.dot(matriz_aux.T, vetor_y))
 
-        primeira_parte = np.dot(matriz_potencia, matriz_transposta_multiplicada_pelo_vetor)
+        primeira_parte = np.dot(potencia_matriz_transposta, vetor_y)
 
         _regressao = matriz_aux.dot(primeira_parte)
 
         return np.array(_regressao)
 
 
-    def gerar_grafico(self, matriz_x, vetor_y, regressao):
+    def gerar_grafico(self, matriz_x, vetor_y, regressao, correlacao_tamanho_casa, correlacao_numero_quartos):
         
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
 
         matriz_np = np.array(matriz_x)
 
-        ax.scatter(matriz_np[:, 1], matriz_np[:, 2], vetor_y, s = 20, color = 'green', marker='o')
+        ax.scatter(matriz_np[:, 1], matriz_np[:, 2], regressao, s = 20, color = 'green', marker='o')
+        ax.set_xlabel('Correlaçao tamanho:' + '%.4f' % correlacao_tamanho_casa)
+        ax.set_ylabel('Correlação quartos:' + '%.4f' % correlacao_numero_quartos)
+
         plt.plot(matriz_np[:, 1], matriz_np[:, 2], regressao, color = 'pink')
-        # plt.plot(matriz_np[:, 2], regressao)
-
         plt.show()
-
 
 
     def correlacao_por_variavel(self, variavel, matriz_x , vetor_y):
