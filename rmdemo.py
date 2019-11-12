@@ -2,6 +2,7 @@ from collections import namedtuple
 import math
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 import pandas as pd
 import demo
 
@@ -21,9 +22,44 @@ class CorrelacaoRegressaoLinearMultipla:
         correlacao_tamanho_casa = self.correlacao_por_variavel(1, matriz_x, vetor_y)
         correlacao_numero_quartos = self.correlacao_por_variavel(2, matriz_x, vetor_y)
 
+        regressao = self.regressao(matriz_x, vetor_y)
+
+        self.gerar_grafico(matriz_x, vetor_y, regressao)
+
 
     def reg_multipla(self):
         pass
+
+    def regressao(self, matriz_x, vetor_y):
+        
+        matriz_aux = np.array(matriz_x)
+
+        multiplicacao_matriz = matriz_aux.T.dot(matriz_aux)
+        
+        matriz_potencia = np.power(multiplicacao_matriz, -1)
+
+        matriz_transposta_multiplicada_pelo_vetor = np.array(np.dot(matriz_aux.T, vetor_y))
+
+        primeira_parte = np.dot(matriz_potencia, matriz_transposta_multiplicada_pelo_vetor)
+
+        _regressao = matriz_aux.dot(primeira_parte)
+
+        return np.array(_regressao)
+
+
+    def gerar_grafico(self, matriz_x, vetor_y, regressao):
+        
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+
+        matriz_np = np.array(matriz_x)
+
+        ax.scatter(matriz_np[:, 1], matriz_np[:, 2], vetor_y, s = 20, color = 'green', marker='o')
+        plt.plot(matriz_np[:, 1], matriz_np[:, 2], regressao, color = 'pink')
+        # plt.plot(matriz_np[:, 2], regressao)
+
+        plt.show()
+
 
 
     def correlacao_por_variavel(self, variavel, matriz_x , vetor_y):
@@ -46,6 +82,7 @@ class CorrelacaoRegressaoLinearMultipla:
         _retorno = namedtuple("retorno", ["matri_x", "vetor_y"])
 
         return _retorno(matriz_aux, vetor_y_aux)
+
 
     def correlacao(self, vetor_x, vetor_y):
     
