@@ -1,6 +1,7 @@
 from collections import namedtuple
 import math
 import numpy as np
+import utils
 import matplotlib.pyplot as plt
 
 x1 = [10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5]
@@ -16,7 +17,7 @@ class CorrelacaoRegressaoLinear:
         vetor_x = x1
         vetor_y = y1
 
-        correlacao = self.correlacao(vetor_x, vetor_y)
+        correlacao = utils.correlacao(vetor_x, vetor_y)
         regressao = self.regressao(vetor_x, vetor_y)
         self.gerar_grafico(vetor_x, vetor_y, correlacao, regressao)
 
@@ -33,60 +34,15 @@ class CorrelacaoRegressaoLinear:
         plt.title(f'Correlação: {correlacao_arredondada} e Regressão => b0 : {b0} b1 : {b1}')
         plt.show()
 
-
-    def correlacao(self, vetor_x, vetor_y):
-
-        quantidade_elementos_x = len(vetor_x)
-        quantidade_elementos_y = len(vetor_y)
-
-        soma_x = self.somar_valores(vetor_x, quantidade_elementos_x)
-        media_x = soma_x / quantidade_elementos_x
-
-        soma_y = self.somar_valores(vetor_y, quantidade_elementos_y)
-        media_y = soma_y / quantidade_elementos_y
-
-        soma_parte_baixo_1 = 0.0
-        soma_parte_baixo_2 = 0.0
-        soma_parte_cima = 0.0
-        
-        for i in range(quantidade_elementos_x):
-            x = float(vetor_x[i])
-            y = float(vetor_y[i])
-
-            parte_cima_1 = x - media_x
-            parte_cima_2 = y - media_y
-            soma_parte_cima = soma_parte_cima + (parte_cima_1 * parte_cima_2)
-
-            parte_baixo_1 = math.pow((x - media_x), 2)
-            soma_parte_baixo_1 = soma_parte_baixo_1 + parte_baixo_1
-
-            parte_baixo_2 = math.pow((y - media_y), 2)
-            soma_parte_baixo_2 = soma_parte_baixo_2 + parte_baixo_2
-
-        parte_baixo = soma_parte_baixo_1 * soma_parte_baixo_2
-        parte_baixo = math.sqrt(parte_baixo)
-
-        coefiente_correlacao = soma_parte_cima / parte_baixo
-
-        return coefiente_correlacao
-
-
-    def somar_valores(self, vetor, quantidade_elementos):
-        soma = 0.0
-        for i in range(quantidade_elementos):
-            soma = soma + vetor[i]
-        return soma
-
-
     def regressao(self, vetor_x, vetor_y):
 
         quantidade_elementos_x = len(vetor_x)
         quantidade_elementos_y = len(vetor_y)
 
-        soma_x = self.somar_valores(vetor_x, quantidade_elementos_x)
+        soma_x = utils.somar_valores(vetor_x, quantidade_elementos_x)
         media_x = soma_x / quantidade_elementos_x
 
-        soma_y = self.somar_valores(vetor_y, quantidade_elementos_y)
+        soma_y = utils.somar_valores(vetor_y, quantidade_elementos_y)
         media_y = soma_y / quantidade_elementos_y
 
         soma_parte_cima = 0.0

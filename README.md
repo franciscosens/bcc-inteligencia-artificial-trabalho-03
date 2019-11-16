@@ -8,8 +8,11 @@ Alunos:
 * [Gustavo Westarb](https://github.com/GustavoWestarb)
 * [William Lopes da Silva](wiiulopes)
 
-
 [Conteúdo](assets/Conteúdo/Uni04_AprendizadoSupervisionadoRegressão.pdf)
+
+* [Fase 1: Análise de Correlação e Regressão Linear](#Fase-1:-Análise-de-Correlação-e-Regressão-Linear)
+* [Fase 2: Análise de Regressão Linear Múltipla](#Fase-2:-Análise-de-Regressão-Linear-Múltipla)
+* [Fase 3: Regressão Polinomial - Overfitting](#Fase-3:-Regressão-Polinomial---Overfitting)
 
 ## Fase 1: Análise de Correlação e Regressão Linear
 
