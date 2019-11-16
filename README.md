@@ -10,11 +10,11 @@ Alunos:
 
 [Conteúdo](assets/Conteúdo/Uni04_AprendizadoSupervisionadoRegressão.pdf)
 
-* [Fase 1: Análise de Correlação e Regressão Linear](#Fase-1:-Análise-de-Correlação-e-Regressão-Linear)
-* [Fase 2: Análise de Regressão Linear Múltipla](#Fase-2:-Análise-de-Regressão-Linear-Múltipla)
-* [Fase 3: Regressão Polinomial - Overfitting](#Fase-3:-Regressão-Polinomial---Overfitting)
+* [Fase 1 - Análise de Correlação e Regressão Linear](#Fase-1---Análise-de-Correlação-e-Regressão-Linear)
+* [Fase 2 - Análise de Regressão Linear Múltipla](#Fase-2---Análise-de-Regressão-Linear-Múltipla)
+* [Fase 3 - Regressão Polinomial - Overfitting](#Fase-3---Regressão-Polinomial---Overfitting)
 
-## Fase 1: Análise de Correlação e Regressão Linear
+## Fase 1 - Análise de Correlação e Regressão Linear
 
 Este trabalho visa entender a natureza da relação linear entre os dados. Faremos a análise de correlação, que é utilizada para medir a intensidade de associação de duas variáveis (Relação Linear), e, também a análise de regressão, que é utilizada para prever valores de uma variável dados os valores de outra. A correlação foca primeiramente na associação das variáveis, enquanto a regressão é designada para ajudar a fazer previsões.
 
@@ -60,7 +60,7 @@ Onde,
 3) Qual dos datasets não é apropriado para regressão linear? 
 
 
-## Fase 2: Análise de Regressão Linear Múltipla
+## Fase 2 - Análise de Regressão Linear Múltipla
 
 Agora, em vez de uma variável independente x (por exemplo, quando nós modelamos o preço da casa com base apenas em seu tamanho), vamos considerar múltiplas variáveis independentes x1, x2, ... xN. Com isso, iremos prever preço da casa com base em seu tamanho e número de quartos.
 
@@ -97,7 +97,7 @@ f) Mostre na figura os coeficientes de correlação entre **Tamanho da casa** e 
 
 g) Calcule o preço de uma casa que tem tamanho de 1650 e 3 quartos. O resultado deve ser igual a 293081.
 
-## Fase 3: Regressão Polinomial - Overfitting
+## Fase 3 - Regressão Polinomial - Overfitting
 
 Nesta fase iremos considerar a Regressão Polinomial com uma variável x. A Regressão Polinomial encaixa uma relação não linear entre o valor de x e o valor correspondente de y. Neste caso a fórmula geral da Regressão Polinomial é:
 
