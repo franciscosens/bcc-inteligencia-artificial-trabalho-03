@@ -3,16 +3,31 @@ import matplotlib.pyplot as plt
 import numpy as np
 import numpy.polynomial.polynomial as poly
 import pandas as pd
+import random
 
 class Questao03:
 
     def __init__(self):
         self.vetor_x = []
         self.vetor_y = []
+        self.vetor_x_treinamento = []
+        self.vetor_y_treinamento = []
+        self.vetor_x_teste = []
+        self.vetor_y_teste = []
 
         self.definir_variaveis(self.ler_dados())
+        self.gerar_vetor_aleatoriamente()
         self.gerar_grafico()
 
+    def gerar_vetor_aleatoriamente(self):
+        quantidade_10_porcento = int((len(self.vetor_x) * 10) / 100)
+        posicoes_vetor = [i for i in range(len(self.vetor_x))]
+        posicoes_teste = random.choices(posicoes_vetor, k=quantidade_10_porcento) 
+        posicoes_treinamento = [x for x in posicoes_vetor if x not in posicoes_teste]
+        self.vetor_x_treinamento = [self.vetor_x[i] for i in posicoes_treinamento]
+        self.vetor_y_treinamento = [self.vetor_y[i] for i in posicoes_treinamento]
+        self.vetor_x_teste = [self.vetor_x[i] for i in posicoes_teste]
+        self.vetor_y_teste = [self.vetor_y[i] for i in posicoes_teste]
 
     def gerar_polyfit(self, valor_N):
         return np.polyfit(self.vetor_x, self.vetor_y, valor_N)[::-1]
@@ -52,7 +67,7 @@ class Questao03:
         plt.plot(linha_E.vetor_x, linha_E.vetor_y, color='black')
 
         #Questao - F
-        linha_F = self.gerar_linha(self.gerar_polyfit(4))
+        linha_F = self.gerar_linha(self.gerar_polyfit(8))
         plt.plot(linha_F.vetor_x, linha_F.vetor_y, color='yellow')
 
         plt.show()
