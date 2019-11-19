@@ -7,6 +7,7 @@
 from collections import namedtuple
 import math
 import numpy as np
+from numpy.linalg import inv
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import pandas as pd
@@ -23,6 +24,8 @@ class CorrelacaoRegressaoLinearMultipla:
         # 0 - Primeira coluna é sempre um
         # 1 - Segunda coluna é tamanho da casa
         # 2 - Terceira coluna é o número de quartos
+        matriz_aux = []
+        matriz_aux.append([1, 1650, 3])
         matriz_x = variaveis.matri_x
         vetor_y = variaveis.vetor_y
 
@@ -41,15 +44,23 @@ class CorrelacaoRegressaoLinearMultipla:
         
         matriz_aux = np.array(matriz_x)
 
+        #a = Xt*X
         multiplicacao_matriz = matriz_aux.T.dot(matriz_aux)
         
-        matriz_potencia = np.power(multiplicacao_matriz, -1)
+        #b = (a)-1
+        matriz_potencia = inv(multiplicacao_matriz)
 
+        #c = b * Xt
         potencia_matriz_transposta = np.dot(matriz_potencia, matriz_aux.T)
-        #matriz_transposta_multiplicada_pela_vetor = np.array(np.dot(matriz_aux.T, vetor_y))
-
+        
+        #d = c * Y
         primeira_parte = np.dot(potencia_matriz_transposta, vetor_y)
 
+        # Questão G
+        matriz_aux_questao_G = np.array([1, 1650, 3])
+        print(matriz_aux_questao_G.dot(primeira_parte))
+
+        #X * d
         _regressao = matriz_aux.dot(primeira_parte)
 
         return np.array(_regressao)
@@ -58,11 +69,11 @@ class CorrelacaoRegressaoLinearMultipla:
     def gerar_grafico(self, matriz_x, vetor_y, regressao, correlacao_tamanho_casa, correlacao_numero_quartos):
         
         fig = plt.figure()
-        ax = fig.add_subplot(111, projection='3d')
+        ax = fig.add_subplot(projection='3d')
 
         matriz_np = np.array(matriz_x)
 
-        ax.scatter(matriz_np[:, 1], matriz_np[:, 2], regressao, s = 20, color = 'green', marker='o')
+        ax.scatter(matriz_np[:, 1], matriz_np[:, 2], vetor_y, s = 20, color = 'green', marker='o')
         ax.set_xlabel('Correlaçao tamanho:' + '%.4f' % correlacao_tamanho_casa)
         ax.set_ylabel('Correlação quartos:' + '%.4f' % correlacao_numero_quartos)
 
