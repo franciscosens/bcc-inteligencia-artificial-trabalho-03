@@ -1,3 +1,9 @@
+# Integrantes:
+# • Bruno Geisler Vigentas
+# • Francisco Lucas Sens
+# • Gustavo Westarb
+# • William Lopes da Silva
+
 import math
 
 def correlacao(vetor_x, vetor_y):
