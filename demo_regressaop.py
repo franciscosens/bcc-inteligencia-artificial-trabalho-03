@@ -70,17 +70,21 @@ class Questao03:
 
 
     def ler_dados(self):
-        return pd.read_csv('.\/assets\/Dados\/data_preg.csv')
+        return pd.read_csv('./assets/Dados/data_preg.csv')
 
 
     def gerar_grafico(self):
-        plt.scatter(self.vetor_x, self.vetor_y, marker='s',  color='red', linewidth=1)
+
+        #######################            INICIO GRAFICO 1            #######################################
+
+        print('\n################# Dados normais #################\n')
+
+        plt.figure(0)
+        plt.scatter(self.vetor_x, self.vetor_y, marker='s', color='red', linewidth=1)
 
         #Questao - C
         linha_C = self.gerar_linha(self.gerar_polyfit(1, self.vetor_x, self.vetor_y), self.vetor_x, self.vetor_y)
         plt.plot(linha_C.vetor_x, linha_C.vetor_y, color='red')
-
-        print('################# Dados normais #################')
 
         print('Questao - C - Primeira')
         print(self.erro_quadratico_medio(linha_C.vetor_y))
@@ -89,14 +93,14 @@ class Questao03:
         linha_D = self.gerar_linha(self.gerar_polyfit(2, self.vetor_x, self.vetor_y), self.vetor_x, self.vetor_y)
         plt.plot(linha_D.vetor_x, linha_D.vetor_y, color='green')
         
-        print('Questao - D')
+        print('Questao - D - Primeira')
         print(self.erro_quadratico_medio(linha_D.vetor_y))
 
         #Questao - E
         linha_E = self.gerar_linha(self.gerar_polyfit(3, self.vetor_x, self.vetor_y), self.vetor_x, self.vetor_y)
         plt.plot(linha_E.vetor_x, linha_E.vetor_y, color='black')
 
-        print('Questao - E')
+        print('Questao - E - Primeira')
         print(self.erro_quadratico_medio(linha_E.vetor_y))
 
         #Questao - F
@@ -106,18 +110,62 @@ class Questao03:
         print('Questao - F - Primeira')
         print(self.erro_quadratico_medio(linha_F.vetor_y))
 
+        #######################            FIM GRAFICO 1            #######################################
+
+
+
+
+
+
+        #######################            INICIO GRAFICO 2            #######################################
+
+        print('\n################# Dados treinamento #################\n')
+
+        plt.figure(1)
+        plt.scatter(self.vetor_x_treinamento, self.vetor_y_treinamento, marker='s', color='red', linewidth=1)
+
         #Questao - C - 2
-        linha_C2 = self.gerar_linha(self.gerar_polyfit(1, self.vetor_x_treinamento, self.vetor_y_treinamento), self.vetor_x, self.vetor_y_treinamento)
+        linha_C2 = self.gerar_linha(self.gerar_polyfit(1, self.vetor_x_treinamento, self.vetor_y_treinamento), self.vetor_x_treinamento, self.vetor_y_treinamento)
         plt.plot(linha_C2.vetor_x, linha_C2.vetor_y, color='red')
 
+        print('Questao - C - Segunda')
+        print(self.erro_quadratico_medio(linha_C2.vetor_y))
+
+        #Questao - D - 2
+        linha_D2 = self.gerar_linha(self.gerar_polyfit(2, self.vetor_x_treinamento, self.vetor_y_treinamento), self.vetor_x_treinamento, self.vetor_y_treinamento)
+        plt.plot(linha_D2.vetor_x, linha_D2.vetor_y, color='green')
+
+        print('Questao - D - Segunda')
+        print(self.erro_quadratico_medio(linha_D2.vetor_y))
+
+        #Questao - E - 2
+        linha_E2 = self.gerar_linha(self.gerar_polyfit(3, self.vetor_x_treinamento, self.vetor_y_treinamento), self.vetor_x_treinamento, self.vetor_y_treinamento)
+        plt.plot(linha_E2.vetor_x, linha_E2.vetor_y, color='black')
+
+        print('Questao - E - Segunda')
+        print(self.erro_quadratico_medio(linha_E2.vetor_y))
+
         #Questao - F - 2
-        linha_F2 = self.gerar_linha(self.gerar_polyfit(8, self.vetor_x_treinamento, self.vetor_y_treinamento), self.vetor_x, self.vetor_y_treinamento)
+        linha_F2 = self.gerar_linha(self.gerar_polyfit(8, self.vetor_x_treinamento, self.vetor_y_treinamento), self.vetor_x_treinamento, self.vetor_y_treinamento)
         plt.plot(linha_F2.vetor_x, linha_F2.vetor_y, color='yellow')
 
-        print('################# Dados de teste #################')
+        print('Questao - C - Segunda')
+        print(self.erro_quadratico_medio(linha_F2.vetor_y))
+
+        #######################            FIM GRAFICO 2            #######################################
+
+        print('\n################# Dados de teste #################\n')
         questao_i_linha_c = self.gerar_linha(self.gerar_polyfit(1, self.vetor_x_teste, self.vetor_y_teste), self.vetor_x_teste, self.vetor_y_teste)
         print('Questao C')
         print(self.erro_quadratico_medio(questao_i_linha_c.vetor_y))
+
+        questao_i_linha_d = self.gerar_linha(self.gerar_polyfit(2, self.vetor_x_teste, self.vetor_y_teste), self.vetor_x_teste, self.vetor_y_teste)
+        print('Questao E')
+        print(self.erro_quadratico_medio(questao_i_linha_d.vetor_y))
+
+        questao_i_linha_e = self.gerar_linha(self.gerar_polyfit(3, self.vetor_x_teste, self.vetor_y_teste), self.vetor_x_teste, self.vetor_y_teste)
+        print('Questao E')
+        print(self.erro_quadratico_medio(questao_i_linha_e.vetor_y))
 
         questao_i_linha_f = self.gerar_linha(self.gerar_polyfit(8, self.vetor_x_teste, self.vetor_y_teste), self.vetor_x_teste, self.vetor_y_teste)
         print('Questao F')
