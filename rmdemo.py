@@ -24,8 +24,6 @@ class CorrelacaoRegressaoLinearMultipla:
         # 0 - Primeira coluna é sempre um
         # 1 - Segunda coluna é tamanho da casa
         # 2 - Terceira coluna é o número de quartos
-        matriz_aux = []
-        matriz_aux.append([1, 1650, 3])
         matriz_x = variaveis.matri_x
         vetor_y = variaveis.vetor_y
 
@@ -58,6 +56,7 @@ class CorrelacaoRegressaoLinearMultipla:
 
         # Questão G
         matriz_aux_questao_G = np.array([1, 1650, 3])
+        print('Questão G, resultado do preço da casa é: ')
         print(matriz_aux_questao_G.dot(primeira_parte))
 
         #X * d

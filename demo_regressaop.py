@@ -112,11 +112,6 @@ class Questao03:
 
         #######################            FIM GRAFICO 1            #######################################
 
-
-
-
-
-
         #######################            INICIO GRAFICO 2            #######################################
 
         print('\n################# Dados treinamento #################\n')
@@ -170,6 +165,9 @@ class Questao03:
         questao_i_linha_f = self.gerar_linha(self.gerar_polyfit(8, self.vetor_x_teste, self.vetor_y_teste), self.vetor_x_teste, self.vetor_y_teste)
         print('Questao F')
         print(self.erro_quadratico_medio(questao_i_linha_f.vetor_y))
+
+        print('Questao K')
+        print('O método mais preciso e o N=8, assim a linha de regressão abrange mais dados')
 
         plt.show()
 

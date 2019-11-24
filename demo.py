@@ -26,6 +26,7 @@ class CorrelacaoRegressaoLinear:
         correlacao = utils.correlacao(vetor_x, vetor_y)
         regressao = self.regressao(vetor_x, vetor_y)
         self.gerar_grafico(vetor_x, vetor_y, correlacao, regressao)
+        print('O dataset que não é apropriado é o terceito x3 e y3')
 
 
     def gerar_grafico(self, vetor_x, vetor_y, correlacao, regressao):
