@@ -8,7 +8,15 @@ Alunos:
 * [Gustavo Westarb](https://github.com/GustavoWestarb)
 * [William Lopes da Silva](wiiulopes)
 
-[Conteúdo](assets/Conteúdo/Uni04_AprendizadoSupervisionadoRegressão.pdf)
+# Vídeos
+
+[Questão 01](assets/Resultados/Questão_01.mkv)
+
+[Questão 02](assets/Resultados/Questão_02.mkv)
+
+[Questão 03](assets/Resultados/Questão_03.mkv)
+
+# [Conteúdo](assets/Conteúdo/Uni04_AprendizadoSupervisionadoRegressão.pdf)
 
 * [Fase 1 - Análise de Correlação e Regressão Linear](#Fase-1---Análise-de-Correlação-e-Regressão-Linear)
 * [Fase 2 - Análise de Regressão Linear Múltipla](#Fase-2---Análise-de-Regressão-Linear-Múltipla)
